@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <style>
+        body {
+            background-color: #e8f5e9; /* Light green background */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #2e7d32; /* Dark green for the title */
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2.5em;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #ffffff; /* White background */
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #4caf50; /* Green border */
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #f9fff9; /* Subtle green input field background */
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            border-color: #2e7d32; /* Dark green focus */
+            outline: none;
+            box-shadow: 0 0 6px rgba(46, 125, 50, 0.5);
+        }
+
+        button {
+            padding: 12px;
+            background-color: #4caf50; /* Green button */
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #2e7d32; /* Darker green hover */
+            transform: scale(1.03);
+        }
+
+        p {
+            text-align: center;
+            color: #757575; /* Subtle gray */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create a New Post</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="title" placeholder="Title" required>
+            <textarea name="content" placeholder="Content" rows="5" required></textarea>
+            <input type="text" name="category" placeholder="Category" required>
+            <button type="submit">Create</button>
+        </form>
+        <p>Fill out all fields to create a post.</p>
+    </div>
+</body>
+</html>

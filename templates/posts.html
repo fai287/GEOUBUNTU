@@ -1,0 +1,80 @@
+
+
+{% load static %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="{% static 'assets/css/blog.css' %}">
+    <link href="{% static 'assets/img/world2.png' %}" rel="icon">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1>Blog</h1>
+            <nav>
+                <a href="{% url '' %}">Home</a>
+                <a href="{% url '' %}">About</a>
+                <a href="{% url '' %}">Create Post</a>
+                <a href="#">Profile</a>
+                <a href="#">Logout</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Loop through all posts -->
+        {% for post in posts %}
+        <div class="post">
+            <div class="post-header">
+                <img src="{{ post.author.profile_image.url }}" alt="User Image" class="user-image">
+                <div>
+                    <h3>{{ post.author.username }}</h3>
+                    <p>{{ post.timestamp|date:"M d, Y, H:i a" }}</p>
+                </div>
+            </div>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content }}</p>
+            <div class="category">
+                <span>{{ post.category }}</span>
+            </div>
+
+            <!-- Comment section -->
+            <div class="comments">
+                <!-- Display existing comments -->
+                <div class="comment-list" id="comment-list-{{ post.id }}">
+                    {% for comment in post.comments.all %}
+                    <div class="comment">
+                        <strong>{{ comment.user.username }}</strong>: {{ comment.content }}
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Comment form -->
+                <div class="comment-form">
+                    <form method="POST" action="{% url 'add_comment' post.id %}">
+                        {% csrf_token %}
+                        <textarea name="comment" placeholder="Add a comment..." required></textarea>
+                        <button type="submit">Post Comment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No posts yet. Be the first to create one!</p>
+        {% endfor %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ year }} Blog Website</p>
+    </footer>
+</body>
+</html>
+
+
+{% endblock %}

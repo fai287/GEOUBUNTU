@@ -1,0 +1,62 @@
+/* Green Theme */
+body {
+    background-color: #e9f7e3; /* Light green background */
+}
+
+h1, p, .lead {
+    color: #325f38; /* Dark green for text */
+}
+
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #325f38; /* Green color for divider line */
+    background-color: #325f38;
+}
+
+.h-custom {
+    height: calc(100% - 73px);
+}
+
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
+}
+
+/* Green button styling */
+.btn-primary {
+    background-color: #325f38; /* Dark green for button */
+    border-color: #325f38;
+}
+
+.btn-primary:hover {
+    background-color: #2a4d2d; /* Darker green on hover */
+    border-color: #2a4d2d;
+}
+
+/* Form input focus color */
+.form-control:focus {
+    border-color: #325f38;
+    box-shadow: 0 0 0 0.25rem rgba(50, 95, 56, 0.25); /* Green outline when focused */
+}
+
+/* Social media buttons */
+.btn-floating {
+    background-color: #325f38; /* Green for floating buttons */
+}
+
+.btn-floating:hover {
+    background-color: #2a4d2d; /* Darker green on hover */
+}
+
+/* Footer */
+.bg-primary {
+    background-color: #325f38 !important; /* Green background for footer */
+}
+
+.text-white {
+    color: white !important; /* White text color */
+}

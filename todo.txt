@@ -1,0 +1,7 @@
+dashboard for apploading data and showing the data
+--show maps, 
+--show graphs
+--upload csv
+
+username :kali
+password :virus202..
